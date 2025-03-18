@@ -1,0 +1,439 @@
+this one has both html and css 
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration/Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          Roboto,
+          -apple-system,
+          Helvetica,
+          sans-serif;
+        background-color: #fff;
+      }
+
+      .registration-container {
+        background-color: #fff;
+        max-width: 360px;
+        padding-bottom: 12px;
+        margin: 0 auto;
+      }
+
+      .top-bar {
+        background-color: #fff;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.12);
+        width: 100%;
+      }
+
+      .status-bar {
+        background-color: #fff;
+        display: flex;
+        width: 100%;
+        padding: 5px 9px 5px 72px;
+        align-items: stretch;
+        gap: 9px;
+      }
+
+      .signal-group {
+        display: flex;
+        align-items: stretch;
+        gap: 2px;
+      }
+
+      .signal-icon {
+        aspect-ratio: 1.29;
+        object-fit: contain;
+        object-position: center;
+        width: 18px;
+        flex-shrink: 0;
+      }
+
+      .wifi-icon {
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;
+        width: 14px;
+        flex-shrink: 0;
+      }
+
+      .battery-group {
+        display: flex;
+        align-items: stretch;
+        gap: 9px;
+      }
+
+      .battery-level {
+        aspect-ratio: 0.64;
+        object-fit: contain;
+        object-position: center;
+        width: 9px;
+        flex-shrink: 0;
+      }
+
+      .time-display {
+        aspect-ratio: 3.3;
+        object-fit: contain;
+        object-position: center;
+        width: 33px;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex-shrink: 0;
+      }
+
+      .page-title {
+        align-self: stretch;
+        flex: 1;
+        flex-basis: 0%;
+        width: 100%;
+        padding: 12px 8px 12px 16px;
+        font-size: 20px;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .input-section {
+        display: flex;
+        margin-top: 12px;
+        width: 100%;
+        padding: 0 12px;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: stretch;
+        font-size: 14px;
+        color: #000;
+        font-weight: 400;
+        line-height: 1;
+        justify-content: center;
+      }
+
+      .section-title {
+        color: #000;
+        font-weight: 500;
+      }
+
+      .text-input {
+        align-self: stretch;
+        flex: 1;
+        flex-basis: 0%;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 4px;
+        width: 100%;
+        padding: 8px 12px;
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      .helper-text {
+        font-size: 12px;
+        line-height: 1;
+        margin-top: 4px;
+      }
+
+      .language-section {
+        margin-top: 12px;
+        width: 100%;
+        padding: 0 12px;
+        overflow: hidden;
+        font-size: 14px;
+        color: #000;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .chip-group {
+        display: flex;
+        margin-top: 4px;
+        width: 100%;
+        align-items: start;
+        gap: 8px;
+        white-space: nowrap;
+        justify-content: start;
+      }
+
+      .language-chip {
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 8px;
+        text-align: center;
+      }
+
+      .language-chip.english {
+        width: 64px;
+      }
+
+      .interests-section {
+        display: flex;
+        margin-top: 12px;
+        width: 100%;
+        padding: 0 12px;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: stretch;
+        color: #000;
+        justify-content: center;
+      }
+
+      .interests-header {
+        display: flex;
+        width: 100%;
+        padding-top: 16px;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1;
+        justify-content: start;
+      }
+
+      .interests-title {
+        align-self: stretch;
+        min-width: 240px;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 100%;
+        flex: 1;
+        flex-basis: 0%;
+      }
+
+      .interests-row {
+        display: flex;
+        margin-top: 8px;
+        width: 100%;
+        align-items: start;
+        gap: 8px;
+        white-space: nowrap;
+        justify-content: start;
+        overflow-x: auto;
+      }
+
+      .interest-chip {
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        padding: 12px;
+        align-items: center;
+        gap: 8px;
+        overflow: hidden;
+        justify-content: center;
+        width: 150px;
+      }
+
+      .emoji-container {
+        border-radius: 16px;
+        background-color: rgba(0, 0, 0, 0.05);
+        align-self: stretch;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 6px;
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.6;
+        width: 32px;
+        height: 32px;
+      }
+
+      .interest-name {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        align-self: stretch;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex: 1;
+        flex-basis: 12px;
+      }
+
+      .user-profile {
+        display: flex;
+        margin-top: 12px;
+        width: 100%;
+        padding: 16px 12px 0;
+        align-items: center;
+        gap: 12px;
+        justify-content: start;
+      }
+
+      .avatar {
+        border-radius: 40px;
+        background-color: rgba(0, 0, 0, 0.1);
+        align-self: stretch;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+
+      .user-info {
+        align-self: stretch;
+        min-width: 240px;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex: 1;
+        flex-basis: 0%;
+      }
+
+      .user-name {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .user-welcome {
+        color: #000;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .action-buttons {
+        display: flex;
+        margin-top: 12px;
+        width: 100%;
+        padding: 0 12px;
+        align-items: start;
+        gap: 8px;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 500;
+        white-space: nowrap;
+        line-height: 1;
+        justify-content: start;
+      }
+
+      .login-button {
+        border-radius: 8px;
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 10px 12px;
+        color: #000;
+        flex: 1;
+        flex-basis: 0%;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .register-button {
+        border-radius: 8px;
+        background-color: #000;
+        padding: 10px 12px;
+        color: #fff;
+        flex: 1;
+        flex-basis: 0%;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="registration-container">
+      <header class="top-bar">
+        <div class="status-bar">
+          <div class="signal-group">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/e54053112822493a93a674e8c22eb25b/ea928b59fab9bcaa61abb1cd619bdac569fae946a1467d1b1b7784619f03c481?placeholderIfAbsent=true"
+              alt="Signal strength"
+              class="signal-icon"
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/e54053112822493a93a674e8c22eb25b/3a7b64073a3fb877f87ed5b5654888250ce42065a9cac5072fbeb95b1569c72e?placeholderIfAbsent=true"
+              alt="WiFi signal"
+              class="wifi-icon"
+            />
+          </div>
+          <div class="battery-group">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/e54053112822493a93a674e8c22eb25b/9c8248726bec5e7781b9494ef3c7ca1865dd3d350226fd36d968d51a376f268f?placeholderIfAbsent=true"
+              alt="Battery level"
+              class="battery-level"
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/e54053112822493a93a674e8c22eb25b/c2e0ac5d1726baded68e230abd2fe7babb4474561d317eb56b3c06085b6f3dd4?placeholderIfAbsent=true"
+              alt="Current time"
+              class="time-display"
+            />
+          </div>
+        </div>
+        <h1 class="page-title">User Registration/Login</h1>
+      </header>
+
+      <section class="input-section">
+        <h2 class="section-title">Basic Info Collection</h2>
+        <input
+          type="text"
+          class="text-input"
+          placeholder="Enter your information"
+          aria-label="Enter your information"
+        />
+        <p class="helper-text">Please fill in all the required fields.</p>
+      </section>
+
+      <section class="language-section">
+        <h2 class="section-title">Language Preferences</h2>
+        <div class="chip-group" role="group" aria-label="Language selection">
+          <button class="language-chip english">English</button>
+          <button class="language-chip">Spanish</button>
+          <button class="language-chip">French</button>
+          <button class="language-chip">Mandarin</button>
+        </div>
+        <p class="helper-text">Select your preferred language</p>
+      </section>
+
+      <section class="interests-section">
+        <div class="interests-header">
+          <h2 class="interests-title">Cultural Interests</h2>
+        </div>
+        <div
+          class="interests-row"
+          role="group"
+          aria-label="Cultural interests selection"
+        >
+          <button class="interest-chip">
+            <span class="emoji-container" aria-hidden="true">🎭</span>
+            <span class="interest-name">Theater</span>
+          </button>
+          <button class="interest-chip">
+            <span class="emoji-container" aria-hidden="true">🎨</span>
+            <span class="interest-name">Art</span>
+          </button>
+          <button class="interest-chip">
+            <span class="emoji-container" aria-hidden="true">🎶</span>
+            <span class="interest-name">Music</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="user-profile">
+        <div class="avatar" role="img" aria-label="User avatar"></div>
+        <div class="user-info">
+          <h2 class="user-name">User's Name</h2>
+          <p class="user-welcome">Welcome! Let's get started</p>
+        </div>
+      </section>
+
+      <section class="action-buttons">
+        <button class="login-button">Login</button>
+        <button class="register-button">Register</button>
+      </section>
+    </main>
+  </body>
+</html>
